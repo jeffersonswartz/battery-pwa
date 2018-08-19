@@ -1,16 +1,17 @@
 (function(){
 	document.addEventListener('DOMContentLoaded',function(){
 
-			var level = document.getElementById('level');
+	var level = document.getElementById('level');
 	var charging = document.getElementById('charging');
 	var discharging = document.getElementById('discharging');
+	var editorial = document.getElementById('editorial');
 
 	var filler = document.getElementById('filler');
 	var stopColors = document.getElementsByClassName('stop-color');
 	var fillColors = document.getElementsByClassName('fill');
 	var strokeColors = document.getElementsByClassName('stroke');
-	var safeTheme = ['#27f4b9','#29f4bc'];
-	var dangerTheme = ['#e7342d','#e05824'];
+	var safeTheme = ['#4579e2','#3461c1','#2d55aa'];
+	var dangerTheme = ['#e2455e','#c1344a','#aa2d41'];
 	var initFiller = 150;
 	function monitorBattery(battery){
 		console.log(battery);
@@ -33,21 +34,15 @@
 		}else{
 			theme = dangerTheme;
 		}
-		for(var i=0;i<stopColors.length;i++){
-				stopColors[i].setAttribute("stop-color",theme[0]);
+		var nodes = document.getElementsByClassName("parallax")[0];
+		for (var i = 0; i < nodes.children.length; i++) {
+			nodes.children[i].style.fill = theme[i];
 		}
-		for(var i=0;i<fillColors.length;i++){
-			fillColors[i].setAttribute("fill",theme[1]);
-		}
-		for(var i=0;i<strokeColors.length;i++){
-			strokeColors[i].setAttribute("stroke",theme[1]);
-		}
-		diff = (1 - battery.level)*200;
-		filler.setAttribute('cy',initFiller+diff);
-
+		// filler.setAttribute('cy',initFiller+diff);
+		editorial.style.height = ceil(battery.level * 100) + '%';
 		level.innerHTML = ceil(battery.level * 100) ;
-		charging.innerHTML = timeCalculator(battery.chargingTime);
-		discharging.innerHTML = timeCalculator(battery.dischargingTime);
+		// charging.innerHTML = timeCalculator(battery.chargingTime);
+		// discharging.innerHTML = timeCalculator(battery.dischargingTime);
 
 	}
 

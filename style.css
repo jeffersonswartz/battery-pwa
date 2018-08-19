@@ -23,13 +23,15 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: calc(100vh - 50px);
-    justify-content: space-between;
+    height: calc(100vh);
+		justify-content: space-between;
+		font-family: 'Lato',sans-serif;
 }
 .title{
 	color: #89888c;
 	text-align: center;
 	margin-top:10px;
+	font-size: 3em;
 }
 .mini-indicators{
 	width: 100%;
@@ -41,3 +43,40 @@ body{
 .p10{
 	padding: 10px;
 }
+#level {
+	position: absolute;
+	bottom: 10px;
+	margin: 0 auto;
+	z-index: 1;
+	font-size: 10em;
+	color: #ffffff;
+}
+
+#editorial {
+	position: absolute;
+	bottom: 0;
+}
+
+.parallax > use {
+	animation: move-forever 12s linear infinite;
+  }
+  .parallax > use:nth-child(1) {
+	animation-delay: -2s;
+  }
+  .parallax > use:nth-child(2) {
+	animation-delay: -2s;
+	animation-duration: 9s;
+  }
+  .parallax > use:nth-child(3) {
+	animation-delay: -4s;
+	animation-duration: 6s;
+  }
+  
+  @keyframes move-forever {
+	0% {
+	  transform: translate(-90px, 0%);
+	}
+	100% {
+	  transform: translate(85px, 0%);
+	}
+  }
